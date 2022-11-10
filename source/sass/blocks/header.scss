@@ -1,0 +1,242 @@
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    transition: all 0.5s ease;
+
+    &--shadow {
+        box-shadow: 0px 8px 15px -5px #000000;
+    }
+
+    &::before {
+        @include pseudo;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $main-color;
+        z-index: 2;
+    }
+}
+
+.header__body {
+    position: relative;
+    justify-content: space-between;
+    display: flex;
+    height: 50px;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        height: 80px;
+    }
+}
+
+.header__nav {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #63a7c4f7;
+    padding-top: 70px;
+    overflow: auto;
+    transition: all 0.5s ease;
+
+    &.active {
+        top: 0;
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: unset;
+        padding-top: 0;
+        top: 0;
+        height: auto;
+        width: auto;
+        position: relative;
+        z-index: 3;
+        background-color: transparent;
+    }
+}
+
+.header__nav-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-left: 20px;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.header__nav-item {
+    list-style: none;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+
+    @media (min-width: 768px) {
+        position: relative;
+        padding-bottom: 5px;
+        margin-left: 20px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 500;
+
+        &::before {
+            @include pseudo;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            transition: all 0.5s ease;
+        }
+
+        &:hover::before {
+            width: 100%;
+        }
+    }
+}
+
+.header__nav-link {
+    @media (max-width: 767px) {
+        width: 100%;
+        display: inline-block;
+        background-color: #11465cc9;
+        padding: 15px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    @media (min-width: 768px) {
+        background-color: transparent;
+    }
+}
+
+.header__menu {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 22px;
+    position: relative;
+    z-index: 3;
+
+    &::before,
+    &::after {
+        @include pseudo;
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+
+        transition: all 0.5s ease;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+
+    & span {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+
+        transition: all 0.5s ease;
+    }
+
+    &.active::before {
+        transform: rotate(45deg);
+        top: 11px;
+    }
+
+    &.active::after {
+        transform: rotate(-45deg);
+        bottom: 9px;
+    }
+
+    &.active span {
+        transform: scale(0);
+    }
+
+
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+
+.header__nav-item--portfolio {
+
+    @media (max-width: 768px) {
+        & ul {
+            display: none;
+        }
+    }
+
+    @media (min-width: 768px) {
+        position: relative;
+
+        &:hover::before {
+            width: unset;
+        }
+
+        & ul {
+            transition: 0.5s;
+            visibility: hidden;
+            opacity: 0;
+            width: 220%;
+            padding: 20px;
+            border-radius: 5px;
+            list-style: none;
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            background-color: #fff;
+            box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+            text-align: center;
+
+            & li:first-child {
+                margin-bottom: 15px;
+            }
+
+            & a {
+                position: relative;
+                padding-bottom: 8px;
+                color: $main-color;
+
+                &::before {
+                    @include pseudo;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background-color: $main-color;
+                    transition: all 0.5s ease;
+                }
+
+                &:hover::before {
+                    width: 100%;
+                }
+            }
+        }
+
+        &:hover ul {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}

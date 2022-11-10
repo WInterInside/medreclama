@@ -1,0 +1,246 @@
+.main {
+    flex: 1 1 auto;
+    padding-top: 2rem;
+
+    @media (max-width: 991px) {
+        padding-top: 1rem;
+    }
+}
+
+.main__row {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    margin-bottom: 5rem;
+    justify-content: space-between;
+
+    @media (max-width: 991px) {
+        flex-direction: column;
+        margin-bottom: 2.5rem;
+    }
+}
+
+.main__caption,
+.main__subcaption {
+    line-height: 130%;
+    font-weight: 500;
+    margin-top: 0;
+
+    @media (max-width: 991px) {
+        text-align: center;
+    }
+}
+
+.main__caption--action {
+    @media (max-width: 991px) {
+        animation: pulse 3s linear infinite;
+    }
+}
+
+.main__description  {
+    margin: 0;
+    // padding-right: 3rem;
+
+    @media (max-width: 991px) {
+        padding-right: 0;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    &--large {
+        font-size: 24px;
+        line-height: 120%;
+        font-weight: bold;
+    }
+
+    & time {
+        font-weight: bold;
+    }
+
+    &--action {
+        margin-bottom: auto;
+
+        @media (max-width: 991px) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &--attention {
+        margin: 0;
+        padding: 1rem;
+        background-color: rgb(255, 200, 200);
+        border-radius: 10px;
+    }
+
+    &--offer {
+        margin: 0;
+        padding: 1rem;
+        background-color: rgb(231, 231, 231);
+        border-radius: 10px;
+    }
+}
+
+.main__offer {
+    position: relative;
+    margin-top: 2rem;
+    padding-right: 3rem;
+
+    @media (max-width: 991px) {
+        padding-right: 0;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    &::after {
+        position: absolute;
+        @include pseudo;
+        top: calc(50% - 30px);
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 30px solid transparent;
+        border-left: 40px solid rgb(231, 231, 231);
+        border-bottom: 30px solid transparent;
+
+        animation: pulse 3s linear infinite;
+
+        @media (max-width: 991px) {
+            display: none;
+        }
+    }
+}
+
+.main__img {
+    width: 30%;
+    border-radius: 10px;
+    transition: all .5s;
+    overflow: hidden;
+
+    @media (max-width: 991px) {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
+}
+
+.main__img:hover  .main__ph {
+    @media (min-width: 991px) {
+        transform: scale(1.1);
+    }
+}
+
+.main__action,
+.main__form,
+.main__column,
+.main__features-column {
+    width: 35%;
+
+    @media (max-width: 991px) {
+        width: 100%;
+    }
+}
+
+.main__ph {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all .5s;
+}
+
+.main__action {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+
+    @media (max-width: 991px) {
+        align-items: center;
+    }
+}
+
+.main__list-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 14px;
+
+    @media (max-width: 991px) {
+        gap: 1rem;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+.main__icon {
+    flex-shrink: 0;
+    max-width: unset;
+}
+
+
+.main__list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    gap: 5px;
+
+    &--features {
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    &--reviews {
+        list-style: none;
+        gap: 1rem;
+        margin-left: 0;
+
+        & .main__item a {
+            color: blue;
+            text-decoration: underline;
+            transition: all .5s ease;
+
+            &:hover {
+                color: gray;
+            }
+        }
+    }
+
+    &--opalescence {
+        padding-left: 2rem;
+        list-style: disc;
+    }
+}
+
+//drag-and-drop
+
+.selected {
+    opacity: 0.8;
+    background-color: rgba(0, 0, 255, 0.215);
+}
+
+.main__move {
+    align-self: flex-start;
+    cursor: move;
+    padding: 1rem;
+    // border: 1px solid rgba(128, 128, 128, 0.307);
+    border-radius: 1rem;
+    transition: all .5s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
+}
