@@ -156,6 +156,7 @@
     flex-direction: column;
 
     @media (max-width: 991px) {
+        width: 100%;
         align-items: center;
     }
 }
