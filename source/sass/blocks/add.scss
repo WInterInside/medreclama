@@ -16,6 +16,18 @@
         color: #fff;
         background-color: rgba(94, 94, 94, 0.574);
     }
+
+    @media (max-width: 991px) {
+        position: relative;
+        transition: all 1.5s ease;
+        transform: unset;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+        transform: unset;
+    }
 }
 
 .ready {
